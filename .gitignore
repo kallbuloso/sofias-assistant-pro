@@ -1,0 +1,98 @@
+# ── SOFIAS ASSISTANT PRO — what never belongs in the repository ──────────────────────────
+# Everything listed here is created by the app on first run. A fresh clone with
+# none of it present boots straight to the setup screen, which is the intended
+# first experience — so nothing here needs to be committed, and some of it must
+# never be.
+#
+# SYNTAX WARNING — .gitignore has no inline comments. A '#' starts a comment only
+# at the beginning of a line. Anywhere else it is part of the pattern, which then
+# matches nothing and silently disables the rule. The two OAuth rules below were
+# dead for exactly that reason. Keep every comment on its own line.
+
+# ── Secrets. Committing any of these publishes them. ──────────────────────────
+**/api_keys.json
+**/certs/
+**/whatsapp_web/
+
+# Google OAuth tokens (Gmail / Calendar plugins)
+**/token*.json
+**/*.token
+
+# Google OAuth client secrets
+**/client_secret*.json
+*credentials*.json
+**/service_account*.json
+**/secrets.json
+
+# Private keys and keystores — anywhere in the tree, not only under certs/
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.ovpn
+id_rsa*
+id_ed25519*
+
+.env
+.env.*
+docs/
+
+# ── Local tool state ──────────────────────────────────────────────────────────
+# .claude/settings.local.json stores absolute paths and per-machine permissions.
+# Ignored here rather than relying on a global git ignore on one computer.
+.claude/*.local.json
+
+# ── Personal data the assistant accumulates about you ─────────────────────────
+memory/long_term.json
+memory/*.json
+memory/*.db
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Downloaded and generated media ────────────────────────────────────────────
+# providers/voices/ is where Piper drops its ~63 MB .onnx models by preference;
+# the fallback lives in the OS user-data folder instead.
+providers/voices/
+*.onnx
+
+# ── Runtime output ────────────────────────────────────────────────────────────
+# uploads/ is the dashboard's last-resort upload folder, inside the project.
+uploads/
+downloads/
+screenshots/
+*.log
+logs/
+
+# ── Python build noise and tool caches ────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.bak
+*.orig
+*.tmp
+*~
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Editors and operating systems ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
